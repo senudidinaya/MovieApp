@@ -1,0 +1,34 @@
+﻿@page
+@model MoviesApp.Pages.MoviesModel
+@{
+ViewData["Title"] = "List of all movies";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr/>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var _movie in Model.Movies)
+        {
+            <tr>
+                <td scope="row">@_movie.Id</td>
+                <td>@_movie.Title</td>
+                <td>@_movie.Rate/10</td>
+                <td><a href="./Movie/@_movie.Id" class="btn btn-secondary">Show Details</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="position:fixed; bottom: 70px; right:25px;">
+    <a href="./AddMovie" class="btn btn-success">Add new</a>
+</div>
